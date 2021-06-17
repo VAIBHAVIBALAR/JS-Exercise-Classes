@@ -42,8 +42,38 @@ class Airplane {
   */
   
  class Person {
-    
+    constructor(name, age){
+      this.name = name;
+      this.age= age;
+      this.stomach = [];
+    }
+    eat(edfood){
+      if(this.stomach.length < 10){
+         this.stomach.push(edfood);
+      }
+      
+    }
+    poop(){
+      return this.stomach = [];
+    }
+    toString(){
+      return `${this.name}, ${this.age}`;
+    }
   }
+  const ama = new Person('Ama','25');
+  console.log(ama);
+  console.log(ama.eat('pizza'));
+  console.log(ama.eat('carrot'));
+  console.log(ama.eat('pasta'));
+  console.log(ama.eat('sushi'));
+  console.log(ama.eat('BBQ'));
+  console.log(ama.eat('rice'));
+  console.log(ama.eat('bread'));
+  console.log(ama.stomach);
+  console.log(ama.toString());
+
+  
+ 
   
   /*
     TASK 2
@@ -60,8 +90,37 @@ class Airplane {
   */
   
  class Car {
-    
+    constructor(model, milesPerGallon){
+      this.model = model;
+      this.milesPerGallon = milesPerGallon;
+      this.tank = 0;
+      this.odometer = 0;
+    }
+    fill(gallons){
+       this.tank = this.tank + gallons;
+       console.log('GALLONS',this.tank);
+    }
+    drive(distance){
+      if( this.tank !== 0){ 
+      this.odometer = this.odometer + distance;
+      this.tank = this.tank - (distance / this.milesPerGallon);
+      
+      }else if (this.tank == 0){
+        this.odometer = distance;
+        this.tank = 0;
+        return `I ran out of fuel at ${this.odometer} miles!`;
+      }
+    }
+
   }
+  const subaru = new Car ('hatchback', 200);
+  console.log(subaru);
+  console.log(subaru.fill(150));
+  console.log(subaru.drive(400));
+  console.log(subaru.fill(0));
+
+  console.log(subaru.drive(400));
+
   
   /*
     TASK 3
@@ -76,8 +135,22 @@ class Airplane {
           + {name} and {location} of course come from the instance's own properties.
   */
  class Lambdasian {
+   constructor(attr){
+     this.name =  attr.name;
+     this.age = attr.age;
+     this.location = attr.location;
+   }
+   speak(){
+     return `Hello my name is ${this.name}, I am from ${this.location}.`;
+   }
     
   }
+  const vai = new Lambdasian({
+    'name':'VAIBHAVI',
+     'age': 26,
+    'location': 'Redmond'});
+  console.log(vai);
+  console.log(vai.speak());
   
   /*
     TASK 4
@@ -93,7 +166,20 @@ class Airplane {
           + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
           + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
   */
- class Instructor {
+ class Instructor extends Lambdasian {
+   constructor(attrs){
+     super(attrs);
+     this.specialty = attrs.specialty;
+     this.favLanguage= attrs.favLanguage;
+     this.catchPhrase= attrs.catchPhrase;
+   }
+   demo(subject){
+     return `Today we are learning about ${subject}.`;
+
+   }
+   grade(student, subject){
+    return `${student.name} recieves a perfect score on ${subject}.`;
+   }
 
  }
   /*
