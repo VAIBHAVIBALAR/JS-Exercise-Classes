@@ -190,8 +190,21 @@ class Airplane {
    {
     return `${student.name} recieves a perfect score on ${subject}.`;
    }
+   score(an)//STRETCH
+   {
+     return an.grade + (Math.random() * 2) ; 
+   }
 
  }
+ const teacher = new Instructor({
+   'name':'Marc',
+   'speciality': 'front-end',
+   'favLanguage': 'CSS',
+   'catchPhrase': 'Just do it'
+ });
+ console.log(teacher);
+ 
+
   /*
     TASK 5
       - Write a Student class extending Lambdasian.
@@ -213,6 +226,7 @@ class Airplane {
      this.previousBackground = args.previousBackground;
      this.className = args.className;
      this.favSubjects = args.favSubjects;
+     this.grade = 80;//STRETCH
    }
    listSubjects()
    {
@@ -227,8 +241,29 @@ class Airplane {
    {
      return `${this.name} has begun sprint challenge on ${subject}`;
    }
+   graduate(any){//STRETCH 
+     if(any.grade > 70){
+       return `Graduated`;
+     }else{
+       return `Grade the score again`;
+     }
+   }
      
  }
+ const an = new Student({
+  'name': 'Matt',
+  'age': 30,
+  'location': 'London',
+  'previousBackground': 'Plumber',
+  'className': 'WebEU 3',
+  'favSubjects': ['JS', 'Node', 'Redux'],
+  'grade': 80
+
+ })
+ console.log('STUDENT',teacher.score(an));//STRETCH
+ console.log(an.graduate(an));//STRETCH
+
+ 
   
   /*
     TASK 6
